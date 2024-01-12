@@ -8,58 +8,30 @@ public class Main {
         //Random constant
         int c = 1;
 
-        //Single threaded (one thread does all the multiplications and additions) AND Stopwatch
+        //Single thread (one thread does all the multiplications and additions) AND Stopwatch
         long start = System.nanoTime();
-        int[] singleThreaded = singleThread(x, y, c);
+        int[] singleThread = singleThread(x, y, c);
         System.out.println("Time: " + ((System.nanoTime() - start) / 1000000000.0)+ "ms");
-
-        //Multi-threaded adjacesent (where "adjacent" threads scale and add adjacent elements) AND Stopwatch
-
-        //Multi-threaded blocks (where threads break the vector into contiguous block of roughly the same size) AND Stopwatch
-
         }
 
     //Generates random values for newVector
-    private static final int SIZE = 268405456;
+    private static final int Size = 268405456; //ASK MERTZ WHAT IS 1GB AGAIN
     private static int[] randomGenerate() {
         Random randomVector = new Random();
-        int[] newVector = new int[SIZE];
+        int[] newVector = new int[Size];
 
-        //Generates random values for newVector
-        for (int i = 0; i < SIZE; i++) {
+        //Loops over array and generates values
+        for (int i = 0; i < Size; i++) {
             newVector[i] = randomVector.nextInt();
         }
         return newVector;
     }
 
-    //Multi-threaded adjacesent (where "adjacent" threads scale and add adjacent elements)
-    private static int[] multiThreadA(int[] x, int[] y, int c) {
-        int[] z = new int [SIZE];
-        Thread[] threads = new Thread[numThread];
-        for (int i = 0; i < numThread; i++) { //Loop through number of threads
-            final int numThreads = i; //Set final thread value to a variable
-
-        }
-
-        return z;
-    }
-
-    //Multi-threaded blocks (where threads break the vector into contiguous block of roughly the same size)
-    private static int[] multiThreadB(int[] x, int[] y, int c) {
-        int[] z = new int [SIZE];
-        Thread[] threads = new Thread(numThread);
-        for (int i = 0; i < numThread; i++) {
-
-        }
-
-        return z;
-    }
-
-    //Single threaded (one thread does all the multiplications and additions)
+    //Single thread
     private static int[] singleThread(int[] x, int[] y,int c) {
-        int[] z = new int[SIZE];
-        for (int i = 0; i < SIZE; i++) {
-            z[i] = (x[i] * c) + y[i];
+        int[] z = new int[Size]; //Z Array
+        for (int i = 0; i < Size; i++) { //Looping through array
+            z[i] = (x[i] * c) + y[i]; //Formula
         }
         return z;
     }
