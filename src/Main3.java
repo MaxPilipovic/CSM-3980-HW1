@@ -8,6 +8,7 @@ public class Main3 {
         //Random constant
         int c = 1;
 
+        System.out.println("Cores: " + Runtime.getRuntime().availableProcessors());
         //Multi-thread blocks (where threads break the vector into contiguous block of roughly the same size) AND Stopwatch
         for (int numThread = 1; numThread <= 2 * Cores; numThread++) {
             long start = System.nanoTime();
@@ -19,7 +20,7 @@ public class Main3 {
     }
 
     //Generates random values for newVector
-    private static final int Cores = 6;
+    private static final int Cores = Runtime.getRuntime().availableProcessors();
     private static final int Size = 268435456; //ASK MERTZ WHAT IS 1GB AGAIN
     private static int[] randomGenerate() {
         Random randomVector = new Random();

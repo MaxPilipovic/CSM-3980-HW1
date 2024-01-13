@@ -19,7 +19,7 @@ public class Main2 {
     }
 
     //Generates random values for newVector
-    private static final int Cores = 6; //Number of Cores
+    private static final int Cores = Runtime.getRuntime().availableProcessors(); //Number of Cores
     private static final int Size = 268435456; //ASK MERTZ WHAT IS 1GB AGAIN
     private static int[] randomGenerate() {
         Random randomVector = new Random();
