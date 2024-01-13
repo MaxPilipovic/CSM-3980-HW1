@@ -15,7 +15,7 @@ public class Main {
         }
 
     //Generates random values for newVector
-    private static final int Size = 268405456; //ASK MERTZ WHAT IS 1GB AGAIN
+    private static final int Size = 268435456; //ASK MERTZ WHAT IS 1GB AGAIN
     private static int[] randomGenerate() {
         Random randomVector = new Random();
         int[] newVector = new int[Size];

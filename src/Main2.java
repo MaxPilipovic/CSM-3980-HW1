@@ -20,7 +20,7 @@ public class Main2 {
 
     //Generates random values for newVector
     private static final int Cores = 6; //Number of Cores
-    private static final int Size = 268405456; //ASK MERTZ WHAT IS 1GB AGAIN
+    private static final int Size = 268435456; //ASK MERTZ WHAT IS 1GB AGAIN
     private static int[] randomGenerate() {
         Random randomVector = new Random();
         int[] newVector = new int[Size];
@@ -44,12 +44,12 @@ public class Main2 {
             }
             threads[i] = new myThread(x, y, z, c, start, finish); //Starting and initalizing thread
             threads[i].start();
-            for (int j = 0; j < threads.length; j++) { //Loop to wait for each thread to finish and begin next
-                try {
-                    threads[i].join();
-                } catch (InterruptedException ex) {
-                    System.out.println("Something is not working");
-                }
+        }
+        for (int i = 0; i < threads.length; i++) { //Loop to wait for each thread to finish and begin next
+            try {
+                threads[i].join();
+            } catch (InterruptedException ex) {
+                System.out.println("Something is not working");
             }
         }
 

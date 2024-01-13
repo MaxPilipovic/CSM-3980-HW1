@@ -20,7 +20,7 @@ public class Main3 {
 
     //Generates random values for newVector
     private static final int Cores = 6;
-    private static final int Size = 268405456; //ASK MERTZ WHAT IS 1GB AGAIN
+    private static final int Size = 268435456; //ASK MERTZ WHAT IS 1GB AGAIN
     private static int[] randomGenerate() {
         Random randomVector = new Random();
         int[] newVector = new int[Size];
@@ -32,7 +32,7 @@ public class Main3 {
         return newVector;
     }
 
-    //Multi-threaded blocks
+    //Multi-threaded blocks method, Creates array to hold threads, calculates remainder and initializes thread
     private static int[] multiThreadB(int[] x, int[] y, int c, int numThread) {
         int[] z = new int [Size]; //Z array
         Thread[] threads = new Thread[numThread]; //Array to hold threads
@@ -50,12 +50,12 @@ public class Main3 {
             threads[i] = new myThread(x, y, z, c, start, finish); //Creates new Thread
             threads[i].start(); //Intializes
             start = finish; //Starts next thread
-            for (int j = 0; j < threads.length; j++) { //Loop to wait for each thread to finish and begin next
-                try {
-                    threads[i].join();
-                } catch (InterruptedException ex) {
-                    System.out.println("Something is not working");
-                }
+        }
+        for (int i = 0; i < threads.length; i++) { //Loop to wait for each thread to finish and begin next
+            try {
+                threads[i].join();
+            } catch (InterruptedException ex) {
+                System.out.println("Something is not working");
             }
         }
 
