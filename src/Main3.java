@@ -35,18 +35,18 @@ public class Main3 {
 
     //Multi-threaded blocks method, Creates array to hold threads, calculates remainder and initializes thread
     private static int[] multiThreadB(int[] x, int[] y, int c, int numThread) {
-        int[] z = new int [Size]; //Z array
-        Thread[] threads = new Thread[numThread]; //Array to hold threads
+        int[] z = new int [Size];
+        Thread[] threads = new Thread[numThread];
         int blocks = (Size / numThread); //Caculates size of block
         int blockRemainder = (Size % numThread); //Calculates remainder
         int start = 0; //Start of the block for each thread
         int finish; //Finish of the block for each thread
         for (int i = 0; i < numThread; i++) { //Loop over number of threads
-            if (blockRemainder > 0) { //If remainder > 0
+            if (blockRemainder > 0) {
                 finish = start + blocks + 1; //Processes extra element
                 blockRemainder--;
             } else {
-                finish = start + blocks; //Processes thread
+                finish = start + blocks;
             }
             threads[i] = new myThread(x, y, z, c, start, finish); //Creates new Thread
             threads[i].start(); //Intializes

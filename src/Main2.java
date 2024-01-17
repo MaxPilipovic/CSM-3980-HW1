@@ -34,9 +34,9 @@ public class Main2 {
 
     //Multi-threaded adjacesent
     private static int[] multiThreadA(int[] x, int[] y, int c, int numThread) {
-        int[] z = new int [Size]; //Z array
-        Thread[] threads = new Thread[numThread]; //Array to hold threads
-        for (int i = 0; i < numThread; i++) { //Loop through number of threads
+        int[] z = new int [Size];
+        Thread[] threads = new Thread[numThread];
+        for (int i = 0; i < numThread; i++) { //Loop through threads
             int start = i * (Size / numThread);
             int finish = (i + 1) * (Size / numThread);
             if (i == numThread - 1) { //Adjusting the last thread to cover the entire array
