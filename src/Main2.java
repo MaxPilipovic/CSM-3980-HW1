@@ -9,7 +9,7 @@ public class Main2 {
         int c = 1;
 
         //Multi-thread adjacesent (where "adjacent" threads scale and add adjacent elements) AND Stopwatch
-        for (int numThread = 1; numThread <= 2 * Cores; numThread++) {
+        for (int numThread = 1; numThread <= 2 * Cores + 4; numThread++) {
             long start = System.nanoTime();
             int[] multiThread = multiThreadA(x, y, c, numThread);
             System.out.println("Number of threads: " + numThread);

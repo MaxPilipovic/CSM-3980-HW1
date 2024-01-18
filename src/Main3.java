@@ -10,7 +10,7 @@ public class Main3 {
 
         System.out.println("Cores: " + Runtime.getRuntime().availableProcessors());
         //Multi-thread blocks (where threads break the vector into contiguous block of roughly the same size) AND Stopwatch
-        for (int numThread = 1; numThread <= 2 * Cores; numThread++) {
+        for (int numThread = 1; numThread <= 2 * Cores + 4; numThread++) {
             long start = System.nanoTime();
             int[] multiThread = multiThreadB(x, y, c, numThread);
             System.out.println("Number of threads: " + numThread);
