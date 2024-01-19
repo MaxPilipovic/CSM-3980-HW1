@@ -3,10 +3,11 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
+        Random constant = new Random();
         int[] x = randomGenerate();
         int[] y = randomGenerate();
         //Random constant
-        int c = 1;
+        int c = constant.nextInt();
 
         //Single thread (one thread does all the multiplications and additions) AND Stopwatch
         long start = System.nanoTime();

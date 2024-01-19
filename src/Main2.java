@@ -3,10 +3,11 @@ import java.util.Random;
 public class Main2 {
 
     public static void main(String[] args) {
+        Random constant = new Random();
         int[] x = randomGenerate();
         int[] y = randomGenerate();
         //Random constant
-        int c = 1;
+        int c = constant.nextInt();
 
         //Multi-thread adjacesent (where "adjacent" threads scale and add adjacent elements) AND Stopwatch
         for (int numThread = 1; numThread <= 2 * Cores + 4; numThread++) {
@@ -36,14 +37,11 @@ public class Main2 {
     private static int[] multiThreadA(int[] x, int[] y, int c, int numThread) {
         int[] z = new int [Size];
         Thread[] threads = new Thread[numThread];
-        for (int i = 0; i < numThread; i++) { //Loop through threads
-            int start = i * (Size / numThread);
-            int finish = (i + 1) * (Size / numThread);
-            if (i == numThread - 1) { //Adjusting the last thread to cover the entire array
-                finish = Size;
-            }
-            threads[i] = new myThread(x, y, z, c, start, finish); //Starting and initalizing thread
-            threads[i].start();
+        for (int threadID = 0; threadID < numThread; threadID++) { //Loop through threads
+            int start = threadID;
+            threads[threadID] = new myThread(x, y, z, c, start, numThread);
+            //threads[i] = new myThread(x, y, z, c, start, finish); //Starting and initalizing thread
+            threads[threadID].start();
         }
         for (int i = 0; i < threads.length; i++) { //Loop to wait for each thread to finish and begin next
             try {
@@ -62,21 +60,22 @@ public class Main2 {
         private final int[] z;
         private final int c;
         private final int start;
-        private final int finish;
+        private final int numThread;
+        //private final int finish;
 
         //Constuctor
-        public myThread(int[] x, int[] y, int[] z, int c, int start, int finish) {
+        public myThread(int[] x, int[] y, int[] z, int c, int start, int numThread) {
             this.x = x;
             this.y = y;
             this.z = z;
             this.c = c;
             this.start = start;
-            this.finish = finish;
+            this.numThread = numThread;
         }
 
         //Run method
         public void run() {
-            for (int i = start; i < finish; i++) {
+            for (int i = start; i < Size; i += numThread) {
                 z[i] = (x[i] * c) + y[i];
             }
         }

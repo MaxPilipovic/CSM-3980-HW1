@@ -1,12 +1,17 @@
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.Random;
 
 public class Main3 {
 
     public static void main(String[] args) {
+        Random constant = new Random();
         int[] x = randomGenerate();
         int[] y = randomGenerate();
         //Random constant
-        int c = 1;
+        int c = constant.nextInt();
 
         System.out.println("Cores: " + Runtime.getRuntime().availableProcessors());
         //Multi-thread blocks (where threads break the vector into contiguous block of roughly the same size) AND Stopwatch
