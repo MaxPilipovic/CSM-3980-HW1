@@ -11,7 +11,7 @@ public class Main3 {
         int[] x = randomGenerate();
         int[] y = randomGenerate();
         //Random constant
-        int c = constant.nextInt();
+        int c = constant.nextInt(100);
 
         System.out.println("Cores: " + Runtime.getRuntime().availableProcessors());
         //Multi-thread blocks (where threads break the vector into contiguous block of roughly the same size) AND Stopwatch
